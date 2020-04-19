@@ -1,1 +1,3 @@
 /.idea/
+/data/mysql/*
+!/data/mysql/.keep

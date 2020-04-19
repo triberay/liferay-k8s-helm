@@ -1,11 +1,19 @@
 
+global:
+  pv:
+    create: true
+
 liferay:
   java:
     opts: -Xms4g -Xmx4g -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=*:5005
   pv:
-    create: true
     hostpath:
       mnt: /Users/wouter/git/triberay/liferay-k8s-helm/mnt
       osgi:
         modules: /Users/wouter/git/triberay/liferay-k8s-helm/osgi/modules
         war: /Users/wouter/git/triberay/liferay-k8s-helm/osgi/war
+
+mysql:
+  pv:
+    hostpath:
+      data: /Users/wouter/git/triberay/liferay-k8s-helm/data/mysql

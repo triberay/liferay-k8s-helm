@@ -1,0 +1,16 @@
+{{- if .Values.global.pv.create -}}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ include "mysql.fullname" . }}-data-pv
+  labels:
+    {{- include "mysql.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.pv.hostpath.data | quote }}
+{{- end -}}

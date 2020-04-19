@@ -1,4 +1,4 @@
-{{- if .Values.pv.create -}}
+{{- if .Values.global.pv.create -}}
 kind: PersistentVolume
 apiVersion: v1
 metadata:

@@ -3,6 +3,8 @@
 # Declare variables to be passed into your templates.
 
 global:
+  pv:
+    create: false
   mysql:
     database: "lportal"
     user: "lportal"
