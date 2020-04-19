@@ -50,6 +50,8 @@ spec:
               containerPort: 11311
               protocol: TCP
           volumeMounts:
+            - mountPath: {{ .Values.mountPath.data | quote }}
+              name: data-volume
             - name: mnt-volume
               mountPath: {{ .Values.mountPath.mnt | quote }}
             - name: osgi-modules-volume
@@ -74,6 +76,9 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: {{ include "liferay.fullname" . }}-data-pvc
         - name: mnt-volume
           persistentVolumeClaim:
             claimName: {{ include "liferay.fullname" . }}-mnt-pvc

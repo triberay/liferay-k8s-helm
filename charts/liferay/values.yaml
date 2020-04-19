@@ -50,9 +50,8 @@ java:
   version: zulu11
   opts: -Xms4g -Xmx4g
 
-pv:
-  create: false
 mountPath:
+  data: /opt/liferay/data
   mnt: /mnt/liferay
   osgi:
     modules: /opt/liferay/osgi/modules

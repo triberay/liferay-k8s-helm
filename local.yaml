@@ -8,6 +8,7 @@ liferay:
     opts: -Xms4g -Xmx4g -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=*:5005
   pv:
     hostpath:
+      data: /Users/wouter/git/triberay/liferay-k8s-helm/data/liferay
       mnt: /Users/wouter/git/triberay/liferay-k8s-helm/mnt
       osgi:
         modules: /Users/wouter/git/triberay/liferay-k8s-helm/osgi/modules
@@ -17,3 +18,8 @@ mysql:
   pv:
     hostpath:
       data: /Users/wouter/git/triberay/liferay-k8s-helm/data/mysql
+
+elasticsearch:
+  pv:
+    hostpath:
+      data: /Users/wouter/git/triberay/liferay-k8s-helm/data/elasticsearch

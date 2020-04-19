@@ -45,13 +45,13 @@ spec:
               containerPort: 3306
               protocol: TCP
           volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: database-data
+            - name: data-volume
+              mountPath: {{ .Values.mountPath.data | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       restartPolicy: Always
       volumes:
-        - name: database-data
+        - name: data-volume
           persistentVolumeClaim:
             claimName: {{ include "mysql.fullname" . }}-data-pvc
       {{- with .Values.nodeSelector }}

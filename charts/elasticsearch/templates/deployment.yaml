@@ -44,9 +44,16 @@ spec:
             - name: http
               containerPort: 9300
               protocol: TCP
+          volumeMounts:
+            - mountPath: {{ .Values.mountPath.data | quote }}
+              name: data-volume
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       restartPolicy: Always
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: {{ include "elasticsearch.fullname" . }}-data-pvc
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

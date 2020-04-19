@@ -1,6 +1,21 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
+  name: {{ include "liferay.fullname" . }}-data-pvc
+  labels:
+  {{- include "liferay.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  volumeName: {{ include "liferay.fullname" . }}-data-pv
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
   name: {{ include "liferay.fullname" . }}-mnt-pvc
   labels:
     {{- include "liferay.labels" . | nindent 4 }}

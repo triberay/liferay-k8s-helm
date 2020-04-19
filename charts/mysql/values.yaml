@@ -38,3 +38,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+mountPath:
+  data: /var/lib/mysql

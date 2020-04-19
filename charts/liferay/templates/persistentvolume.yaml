@@ -2,6 +2,21 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
+  name: {{ include "liferay.fullname" . }}-data-pv
+  labels:
+  {{- include "liferay.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.pv.hostpath.data | quote }}
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
   name: {{ include "liferay.fullname" . }}-mnt-pv
   labels:
     {{- include "liferay.labels" . | nindent 4 }}
