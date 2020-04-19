@@ -12,3 +12,33 @@ spec:
     requests:
       storage: 1Gi
   volumeName: {{ include "liferay.fullname" . }}-mnt-pv
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "liferay.fullname" . }}-modules-pvc
+  labels:
+  {{- include "liferay.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: {{ include "liferay.fullname" . }}-modules-pv
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "liferay.fullname" . }}-war-pvc
+  labels:
+  {{- include "liferay.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: {{ include "liferay.fullname" . }}-war-pv

@@ -13,4 +13,34 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: {{ .Values.pv.hostpath.mnt | quote }}
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ include "liferay.fullname" . }}-modules-pv
+  labels:
+  {{- include "liferay.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.pv.hostpath.osgi.modules | quote }}
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ include "liferay.fullname" . }}-war-pv
+  labels:
+  {{- include "liferay.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.pv.hostpath.osgi.war | quote }}
 {{- end -}}

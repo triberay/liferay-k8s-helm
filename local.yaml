@@ -6,3 +6,6 @@ liferay:
     create: true
     hostpath:
       mnt: /Users/wouter/git/triberay/liferay-k8s-helm/mnt
+      osgi:
+        modules: /Users/wouter/git/triberay/liferay-k8s-helm/osgi/modules
+        war: /Users/wouter/git/triberay/liferay-k8s-helm/osgi/war

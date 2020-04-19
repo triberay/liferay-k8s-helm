@@ -44,6 +44,10 @@ spec:
           volumeMounts:
             - name: mnt-volume
               mountPath: {{ .Values.mountPath.mnt | quote }}
+            - name: osgi-modules-volume
+              mountPath: {{ .Values.mountPath.osgi.modules | quote }}
+            - name: osgi-war-volume
+              mountPath: {{ .Values.mountPath.osgi.war | quote }}
           readinessProbe:
             httpGet:
               path: "/c/portal/layout"
@@ -65,6 +69,12 @@ spec:
         - name: mnt-volume
           persistentVolumeClaim:
             claimName: {{ include "liferay.fullname" . }}-mnt-pvc
+        - name: osgi-modules-volume
+          persistentVolumeClaim:
+            claimName: {{ include "liferay.fullname" . }}-modules-pvc
+        - name: osgi-war-volume
+          persistentVolumeClaim:
+            claimName: {{ include "liferay.fullname" . }}-war-pvc
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

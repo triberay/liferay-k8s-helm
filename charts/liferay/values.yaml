@@ -54,3 +54,6 @@ pv:
   create: false
 mountPath:
   mnt: /mnt/liferay
+  osgi:
+    modules: /opt/liferay/osgi/modules
+    war: /opt/liferay/osgi/war
