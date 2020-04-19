@@ -34,6 +34,14 @@ spec:
               value: {{ .Values.java.opts }}
             - name: LIFERAY_MODULE_PERIOD_FRAMEWORK_PERIOD_PROPERTIES_PERIOD_OSGI_PERIOD_CONSOLE
               value: 0.0.0.0:11311
+            - name: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD
+              value: {{ .Values.global.mysql.password }}
+            - name: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME
+              value: {{ .Values.global.mysql.user }}
+            - name: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL
+              value: {{ .Values.global.mysql.url }}
+            - name: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME
+              value: {{ .Values.global.mysql.driver }}
           ports:
             - name: http
               containerPort: 8080
