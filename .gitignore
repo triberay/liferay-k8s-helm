@@ -1,3 +1,7 @@
 /.idea/
+/data/elasticsearch/*
+!/data/elasticsearch/.keep
+/data/liferay/*
+!/data/liferay/.keep
 /data/mysql/*
 !/data/mysql/.keep
