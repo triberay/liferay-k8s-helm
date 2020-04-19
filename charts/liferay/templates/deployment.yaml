@@ -41,6 +41,9 @@ spec:
             - name: gogoshell
               containerPort: 11311
               protocol: TCP
+          volumeMounts:
+            - name: mnt-volume
+              mountPath: {{ .Values.mountPath.mnt | quote }}
           readinessProbe:
             httpGet:
               path: "/c/portal/layout"
@@ -58,6 +61,10 @@ spec:
             successThreshold: 1
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: mnt-volume
+          persistentVolumeClaim:
+            claimName: {{ include "liferay.fullname" . }}-mnt-pvc
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

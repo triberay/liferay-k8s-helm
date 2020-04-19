@@ -1,0 +1,16 @@
+{{- if .Values.pv.create -}}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ include "liferay.fullname" . }}-mnt-pv
+  labels:
+    {{- include "liferay.labels" . | nindent 4 }}
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.pv.hostpath.mnt | quote }}
+{{- end -}}

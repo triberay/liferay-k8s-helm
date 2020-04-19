@@ -50,7 +50,7 @@ java:
   version: zulu11
   opts: -Xms4g -Xmx4g
 
-files:
-  mountPath: /mnt/liferay
-deploy:
-  mountPath: /opt/liferay/deploy
+pv:
+  create: false
+mountPath:
+  mnt: /mnt/liferay
